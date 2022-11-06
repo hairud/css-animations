@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./main.css" rel="stylesheet" />
+    <link href="./changing-text.css" rel="stylesheet" />
+    <link href="./typing-text.css" rel="stylesheet" />
+    <link href="./star-button.css" rel="stylesheet" />
+    <title>CSS Animantions</title>
+  </head>
+  <body>
+    <div class="content">
+      <nav class="menu" id="menu">
+        <li
+          class="menu-item menu-item_active"
+          data-animation-id="changing-text"
+        >
+          Changing text
+        </li>
+        <li class="menu-item" data-animation-id="typing-text">Typing text</li>
+        <li class="menu-item" data-animation-id="star-button">Star button</li>
+      </nav>
+      <section class="animation-block" id="changing-text">
+        <div class="changing-text">
+          <div class="changing-text__bracket">[</div>
+          This application is useful for
+          <div class="changing-text__options">
+            <div>developers</div>
+            <div>designers</div>
+            <div>engineers</div>
+          </div>
+          <div class="changing-text__bracket">]</div>
+        </div>
+      </section>
+      <section class="animation-block animation-block_hidden" id="typing-text">
+        <div class="typing-text">
+          This application is useful for
+          <div class="typing-text__typed-word">developers</div>
+          <div class="typing-text__text-cursor">|</div>
+        </div>
+      </section>
+      <section class="animation-block animation-block_hidden" id="star-button">
+        <div class="star-button" id="star-button-element">
+          <div class="star-button__star">&#127775;</div>
+          <div class="star-button__text">Save</div>
+          <div class="star-button__counter" id="star-button-counter">32</div>
+        </div>
+      </section>
+    </div>
+    <script>
+      let currentAnimationId = "changing-text";
+      let counter = 32;
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const nav = document.getElementById("menu");
+
+        nav.addEventListener("click", (e) => {
+          if (e.target.classList.contains("menu-item")) {
+            const targetAnimationId =
+              e.target.getAttribute("data-animation-id");
+
+            const activeMenuItems =
+              document.getElementsByClassName("menu-item_active");
+
+            for (let i = 0; i < activeMenuItems.length; i++) {
+              activeMenuItems[i].classList.remove("menu-item_active");
+            }
+
+            e.target.classList.add("menu-item_active");
+
+            document
+              .getElementById(currentAnimationId)
+              .classList.add("animation-block_hidden");
+            document
+              .getElementById(targetAnimationId)
+              .classList.remove("animation-block_hidden");
+            currentAnimationId = targetAnimationId;
+          }
+        });
+
+        document
+          .getElementById("star-button-element")
+          .addEventListener("click", () => {
+            const starButton = document.getElementById("star-button-element");
+            const starButtonCounter = document.getElementById(
+              "star-button-counter"
+            );
+
+            const counterIncreaser = document.createElement("div");
+            counterIncreaser.classList.add("star-button__counter-increaser");
+            counterIncreaser.innerText = "+1";
+
+            starButton.append(counterIncreaser);
+            starButton.classList.add("star-button_clicked");
+            setTimeout(() => {
+              counter++;
+              starButtonCounter.innerText = counter;
+            }, 1000);
+          });
+      });
+    </script>
+  </body>
+</html>

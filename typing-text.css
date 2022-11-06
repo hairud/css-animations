@@ -1,0 +1,49 @@
+@keyframes textCursor {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.typing-text__text-cursor {
+  animation: textCursor;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  position: relative;
+  left: -5px;
+}
+
+.typing-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@keyframes typedWord {
+  0% { width: 0px }
+  8% { width: 21px }
+  30% { width: 42px }
+  36% { width: 63px }
+  40% { width: 84px }
+  50% { width: 105px }
+  54% { width: 126px }
+  57% { width: 147px }
+  60% { width: 168px }
+  65% { width: 189px }
+  70% { width: 210px }
+  100% { width: 0px }
+}
+
+.typing-text__typed-word {
+  margin-left: 24px;
+  overflow: hidden;
+  animation: typedWord;
+  animation-duration: 3s;
+  animation-timing-function: step-end;
+  animation-iteration-count: infinite;
+}

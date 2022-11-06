@@ -1,0 +1,60 @@
+.changing-text {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+@keyframes bracketOpacity {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.changing-text__bracket {
+  color: #16a085;
+  font-size: 42px;
+  line-height: 40px;
+  position: relative;
+  top: -3px;
+  animation-name: bracketOpacity;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes changingText {
+  0% {
+    top: 0px;
+  }
+  25% {
+    top: 0px;
+  }
+  37.5% {
+    top: -40px;
+  }
+  62.5% {
+    top: -40px;
+  }
+  75% {
+    top: -80px;
+  }
+  90% {
+    top: -80px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+
+.changing-text__options {
+  margin-left: 24px;
+  position: relative;
+  animation-name: changingText;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+}

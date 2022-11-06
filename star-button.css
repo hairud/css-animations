@@ -1,0 +1,54 @@
+.star-button {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ecf0f1;
+  width: fit-content;
+  position: relative;
+  border-radius: 8px;
+  font-size: 24px !important;
+}
+
+.star-button:hover {
+  border: 1px solid #16a085;
+  cursor: pointer;
+}
+
+.star-button__star {
+  padding: 0px 0px 0px 12px;
+}
+
+.star-button__text {
+  padding: 0px 8px 0px 12px;
+}
+
+.star-button__counter {
+  padding: 0px 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: #34495e;
+  border-left: 1px solid #ecf0f1;
+}
+
+.star-button:hover .star-button__counter {
+  border-left: 1px solid #16a085;
+}
+
+@keyframes plusOne {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+}
+
+.star-button__counter-increaser {
+  position: absolute;
+  right: 8px;
+  z-index: -1;
+  color: #ecf0f1;
+  animation: plusOne;
+  animation-duration: 1s;
+}
